@@ -47,16 +47,35 @@ public class Main {
 
     private static void addProduct() {
         System.out.println("Add Product");
-        System.out.print("Product Name: ");
+        System.out.print("Input Product Name: ");
         String name = scanner.nextLine();
-        System.out.print("Product Brand: ");
+        while (!ProductValidator.isProductNameValid(name)) {
+            System.out.println("Invalid input! Product name must be between 3 and 50 characters.");
+            System.out.print("Input Product Name: ");
+            name = scanner.nextLine();
+        }
+
+        System.out.print("Input Product Brand: ");
         String brand = scanner.nextLine();
-        double price = scanner.nextDouble();
+        while (!ProductValidator.isProductBrandValid(brand)) {
+            System.out.println("Invalid input! Product brand must be between 3 and 30 characters.");
+            System.out.print("Input Product Brand: ");
+            brand = scanner.nextLine();
+        }
+
+        System.out.print("Input Product Price: ");
+        String priceStr = scanner.nextLine();
+        while (!ProductValidator.isProductPriceValid(priceStr)) {
+            System.out.println("Invalid input! Product price must be a positive number.");
+            System.out.print("Input Product Price: ");
+            priceStr = scanner.nextLine();
+        }
+        double price = Double.parseDouble(priceStr);
+
         Product product = new Product(name, brand, price);
         productService.addProduct(product);
         System.out.println("Product Successfully Added!");
     }
-
 
     private static void displayAllProducts() {
         System.out.println("List Product:");
@@ -80,6 +99,7 @@ public class Main {
                 System.out.println("Brand: " + product.getBrand());
                 System.out.println("Price: " + product.getPrice());
                 System.out.println("Created At: " + product.getCreatedAt());
+                System.out.println("------------------------");
             }
         }
     }
