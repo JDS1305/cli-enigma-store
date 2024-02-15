@@ -44,8 +44,7 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> searchProducts(String keyword) {
         List<Product> result = new ArrayList<>();
         for (Product product : productList) {
-            if (product.getName().toLowerCase().contains(keyword.toLowerCase()) ||
-                    product.getBrand().toLowerCase().contains(keyword.toLowerCase())) {
+            if (product.getName().toLowerCase().contains(keyword.toLowerCase()) || product.getBrand().toLowerCase().contains(keyword.toLowerCase())) {
                 result.add(product);
             }
         }
