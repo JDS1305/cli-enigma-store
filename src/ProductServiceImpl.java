@@ -26,18 +26,34 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void deleteProduct(int id) {
+    public boolean deleteProduct(int id) {
+        if (productList.isEmpty()) {
+            System.out.println("No products available to delete.");
+            return false;
+        }
+
         for (Product product : productList) {
             if (product.getId() == id) {
                 productList.remove(product);
-                break;
+                return true;
             }
         }
+        System.out.println("Product with ID " + id + " not found!");
+        return false;
     }
 
     @Override
     public List<Product> getAllProducts() {
         return productList;
+    }
+
+    public Product getProductById(int id) {
+        for (Product product : productList) {
+            if (product.getId() == id) {
+                return product;
+            }
+        }
+        return null;
     }
 
     @Override

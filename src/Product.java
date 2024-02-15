@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.util.Objects;
 
 public class Product {
     private static int nextId = 1;
@@ -46,5 +47,27 @@ public class Product {
 
     public Date getCreatedAt() {
         return createdAt;
+    }
+
+    public String toString() {
+        return "Product {" +
+                " id: " + this.id +
+                " name: " + this.name +
+                " brand: " + this.brand +
+                " price: " + this.price +
+                " created at: " + this.createdAt +
+                " }";
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Product product = (Product) o;
+        return id == product.id;
+    }
+
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

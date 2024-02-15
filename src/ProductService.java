@@ -5,9 +5,11 @@ public interface ProductService {
 
     void updateProduct(int id, Product updatedProduct);
 
-    void deleteProduct(int id);
+    boolean deleteProduct(int id);
 
     List<Product> getAllProducts();
 
     List<Product> searchProducts(String keyword);
+
+    Product getProductById(int id);
 }
