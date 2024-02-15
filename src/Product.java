@@ -8,10 +8,10 @@ public class Product {
     private double price;
     private Date createdAt;
 
-    public Product (String name, String brand, double price) {
+    public Product(String name, String brand, double price) {
         this.id = nextId++;
         this.name = name;
-        this. brand = brand;
+        this.brand = brand;
         this.price = price;
         this.createdAt = new Date();
     }
@@ -46,4 +46,5 @@ public class Product {
 
     public Date getCreatedAt() {
         return createdAt;
-    }}
+    }
+}
